@@ -1,1 +1,22 @@
+h1 ToDos
 
+h2 Lägg till en ToDo
+form action="/todo" method="post"
+    input name="name" placeholder="ny todo" type="text"
+    input name="description" placeholder="Beskrivning" type="text" step="1"
+    input type="submit" value="skriv!"
+
+- @tododata.each do |todo|
+    h2 #{todo["name"]}
+        
+    p #{todo["description"]}
+    form action="/todos/#{todo["id"]}/delete" method="post" 
+        input type="submit" value="delete"/
+    
+    hr
+
+
+
+
+
+// a href="/todos/#{todo["id"]}/edit" #{todo["name"]}
