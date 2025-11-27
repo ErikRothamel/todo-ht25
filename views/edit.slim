@@ -1,0 +1,6 @@
+h2 UPPDATERA DIN TODO
+
+form action="/todos/#{@tododata['id']}/update" method="post" 
+    input type="text" name="name" value="#{@tododata['name']}"
+    input type="text" name="description" value="#{@tododata['description']}"
+    input type="submit" value="UPPDATERA"
