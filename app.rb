@@ -7,7 +7,7 @@ require 'sinatra/reloader'
 
 
 
-# Routen /
+
 get '/todo' do
     
     db = SQLite3::Database.new("db/todos.db")
@@ -39,6 +39,19 @@ post ('/todos/:id/delete') do
 
   db = SQLite3::Database.new("db/todos.db")
   db.execute("DELETE FROM todos WHERE id = ?",id)
+
+  redirect('/todo')
+end
+
+post ('/todos/:id/state/:done') do
+
+  state = !params[:done]
+  p params[:done]
+
+  id = params[:id].to_i
+
+  db = SQLite3::Database.new("db/todos.db")
+  db.execute("UPDATE todos SET done = #{state} WHERE id = ?",id)
 
   redirect('/todo')
 end

@@ -12,7 +12,9 @@ form action="/todo" method="post"
     p #{todo["description"]}
     form action="/todos/#{todo["id"]}/delete" method="post" 
         input type="submit" value="delete"/
-    a href="/todos/#{todo["id"]}/edit" Ändra
+    form action="todos/#{todo["id"]}/state/#{todo["done"]}" method="post"
+        input type="submit" value="done"/
+    a href="/todos/#{todo["id"]}/edit"
     
     hr
 
